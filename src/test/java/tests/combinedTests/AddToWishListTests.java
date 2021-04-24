@@ -1,4 +1,4 @@
-package tests;
+package tests.combinedTests;
 
 import api.Auth;
 import org.json.simple.JSONObject;
@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.Cookie;
+import tests.TestBase;
 
 import java.util.Map;
 
@@ -22,7 +23,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static templates.ReportTemplate.filters;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class AddToWishList extends TestBase {
+public class AddToWishListTests extends TestBase {
 
     @Test
     @Order(1)
@@ -68,7 +69,7 @@ public class AddToWishList extends TestBase {
         $(".account").shouldHave(text("qaguru@qa.guru"));
 
         String initialWishListValue = new TestBase().getInitialWishlistCount();
-        Integer initialWishListCount = Integer.parseInt(initialWishListValue.substring(1, initialWishListValue.length() - 1));
+        int initialWishListCount = Integer.parseInt(initialWishListValue.substring(1, initialWishListValue.length() - 1));
 
         String response =
                 given()

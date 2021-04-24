@@ -4,8 +4,10 @@ import api.Auth;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.Cookie;
 import tests.TestBase;
 
@@ -20,7 +22,8 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static templates.ReportTemplate.filters;
 
-public class AddToCartTests {
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class AddToCartTests extends TestBase {
 
     @Test
     @Order(1)

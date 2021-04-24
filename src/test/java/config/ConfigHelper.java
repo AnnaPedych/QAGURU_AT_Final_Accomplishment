@@ -36,8 +36,8 @@ public class ConfigHelper {
                 WebConfig.class, System.getProperties());
     }
 
-        private static AuthorizationConfig getAuthorizationConfig() {
-            return ConfigFactory.newInstance().create(
+    private static AuthorizationConfig getAuthorizationConfig() {
+        return ConfigFactory.newInstance().create(
                     AuthorizationConfig.class, System.getProperties());
     }
 }

@@ -9,6 +9,8 @@ import tests.TestBase;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static config.ConfigHelper.getTestPassword;
+import static config.ConfigHelper.getTestUsername;
 import static io.qameta.allure.Allure.step;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -21,11 +23,11 @@ public class LoginUITests extends TestBase {
             open("");
             $("a[href='/login']").click();
             $("html").shouldHave(text("Welcome, Please Sign In!"));
-            $("#Email").setValue("qaguru@qa.guru");
-            $("#Password").setValue("qaguru@qa.guru1").pressEnter();
+            $("#Email").setValue(getTestUsername());
+            $("#Password").setValue(getTestPassword()).pressEnter();
         });
         step(" ", () -> {
-            $(".account").shouldHave(text("qaguru@qa.guru"));
+            $(".account").shouldHave(text(getTestUsername()));
         });
     }
 

@@ -17,6 +17,8 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static config.ConfigHelper.getTestPassword;
+import static config.ConfigHelper.getTestUsername;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -58,7 +60,7 @@ public class AddToWishListTests extends TestBase {
     @Test
     @Order(2)
     void addToWishListLoggedInTest() throws ParseException {
-        Map<String, String> cookies = new Auth().getAuthorizedCookies("qaguru@qa.guru", "qaguru@qa.guru1");
+        Map<String, String> cookies = new Auth().getAuthorizedCookies(getTestUsername(), getTestPassword());
 
         open("http://demowebshop.tricentis.com/Themes/DefaultClean/Content/images/logo.png");
         getWebDriver().manage().addCookie(new Cookie("Nop.customer", cookies.get("Nop.customer")));
@@ -66,7 +68,7 @@ public class AddToWishListTests extends TestBase {
         getWebDriver().manage().addCookie(new Cookie("ARRAffinity", cookies.get("ARRAffinity")));
 
         open("");
-        $(".account").shouldHave(text("qaguru@qa.guru"));
+        $(".account").shouldHave(text(getTestUsername()));
 
         String initialWishListValue = new TestBase().getInitialWishlistCount();
         int initialWishListCount = Integer.parseInt(initialWishListValue.substring(1, initialWishListValue.length() - 1));

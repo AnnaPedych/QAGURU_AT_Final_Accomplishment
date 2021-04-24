@@ -29,6 +29,11 @@ public class TestBase {
         return $("a[href='/wishlist'] .wishlist-qty").getText();
     }
 
+    public String getInitialCartCount() {
+        open("");
+        return $("a[href='/cart'] .cart-qty").getText();
+    }
+
     @AfterEach
     public void addAttachments(){
         String sessionId = getSessionId();

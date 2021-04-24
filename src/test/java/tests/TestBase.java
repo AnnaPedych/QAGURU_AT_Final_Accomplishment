@@ -1,13 +1,9 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
-import io.restassured.filter.Filter;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-
-import java.util.Collections;
 
 import static com.codeborne.selenide.Selenide.*;
 import static config.ConfigHelper.isVideoOn;

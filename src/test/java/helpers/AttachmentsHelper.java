@@ -53,7 +53,7 @@ public class AttachmentsHelper {
                     e.printStackTrace();
                 }
             }
-            addAttachment("Video", "video/mp4", videoInputStream, "mp4");
+            addAttachment("Video", "video/mp4", videoInputStream, ".mp4");
         }
     }
 

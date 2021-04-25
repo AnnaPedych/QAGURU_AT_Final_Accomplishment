@@ -4,10 +4,7 @@ import api.Auth;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.Cookie;
 import tests.TestBase;
 
@@ -25,6 +22,7 @@ import static tests.TestData.getTestPassword;
 import static tests.TestData.getTestUsername;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Tag("combined")
 public class AddToWishListTests extends TestBase {
 
     @Test

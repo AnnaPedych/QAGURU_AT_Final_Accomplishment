@@ -2,6 +2,7 @@ package tests.UITests;
 
 import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.TestBase;
 
@@ -13,6 +14,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.not;
 
+@Tag("ui")
 public class MainPageTests extends TestBase {
 
     @Test

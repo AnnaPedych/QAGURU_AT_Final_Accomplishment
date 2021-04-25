@@ -1,9 +1,6 @@
 package tests.UITests;
 
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import tests.TestBase;
 
 import static com.codeborne.selenide.Condition.text;
@@ -14,6 +11,7 @@ import static tests.TestData.getTestPassword;
 import static tests.TestData.getTestUsername;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Tag("ui")
 public class LoginUITests extends TestBase {
 
     @Test

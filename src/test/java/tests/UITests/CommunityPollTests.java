@@ -2,10 +2,7 @@ package tests.UITests;
 
 import api.Auth;
 import com.codeborne.selenide.Condition;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.Cookie;
 import tests.TestBase;
 import tests.TestData;
@@ -16,6 +13,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Tag("ui")
 public class CommunityPollTests extends TestBase {
     @Test
     @Order(2)

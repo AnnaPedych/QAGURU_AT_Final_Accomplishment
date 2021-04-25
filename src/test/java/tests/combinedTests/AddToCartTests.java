@@ -1,7 +1,6 @@
 package tests.combinedTests;
 
 import api.Auth;
-import config.AuthorizationConfig;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -18,12 +17,12 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static config.ConfigHelper.getTestPassword;
-import static config.ConfigHelper.getTestUsername;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static templates.ReportTemplate.filters;
+import static tests.TestData.getTestPassword;
+import static tests.TestData.getTestUsername;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class AddToCartTests extends TestBase {

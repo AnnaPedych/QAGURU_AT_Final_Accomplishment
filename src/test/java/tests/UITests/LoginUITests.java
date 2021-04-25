@@ -9,9 +9,9 @@ import tests.TestBase;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static config.ConfigHelper.getTestPassword;
-import static config.ConfigHelper.getTestUsername;
 import static io.qameta.allure.Allure.step;
+import static tests.TestData.getTestPassword;
+import static tests.TestData.getTestUsername;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class LoginUITests extends TestBase {

@@ -38,8 +38,10 @@ public class TestBase {
         attachScreenshot("Last screenshot");
         attachPageSource();
         attachAsText("Browser console logs", getConsoleLogs());
-        if (isVideoOn()) attachVideo(sessionId);
 
         closeWebDriver();
+
+        if (isVideoOn()) attachVideo(sessionId);
+
     }
 }

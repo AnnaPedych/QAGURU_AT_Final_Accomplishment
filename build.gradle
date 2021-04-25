@@ -69,6 +69,11 @@ tasks.withType(Test) {
     }
 }
 
+test {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+}
+
 task ui(type: Test) {
     useJUnitPlatform {
         includeTags 'ui'

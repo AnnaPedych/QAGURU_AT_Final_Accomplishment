@@ -8,6 +8,7 @@ import tests.TestBase;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Tag("ui")
@@ -15,14 +16,15 @@ public class SuggestionsAndHistoryTests extends TestBase {
 
     @Test
     public void verifySearchSuggestionAndHistoryTest() {
-
-        open("");
-        $("#small-searchterms").val("jeans");
-        $(".ui-autocomplete li a").shouldHave(Condition.text("Blue Jeans")).click();
+        step("Open test Url", () -> open(""));
+        step("Type jeans into search field", () -> $("#small-searchterms").val("jeans"));
+        step("Verify search suggestion is appeared and click on it", () -> $(".ui-autocomplete li a").shouldHave(Condition.text("Blue Jeans")).click());
         String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
-        assertEquals("http://demowebshop.tricentis.com/blue-jeans", currentUrl);
-        $(".product-name h1").shouldHave(Condition.text("Blue Jeans"));
-        open("");
-        $(".block-recently-viewed-products").$("a[href='/blue-jeans']").shouldBe(Condition.visible);
+        step("Verify that user was redirected to correct page", () -> {
+            assertEquals("http://demowebshop.tricentis.com/blue-jeans", currentUrl);
+            $(".product-name h1").shouldHave(Condition.text("Blue Jeans"));
+        });
+        step("Return to the main page", () -> open(""));
+        step("Verify search history is extended with Jeans product", () -> $(".block-recently-viewed-products").$("a[href='/blue-jeans']").shouldBe(Condition.visible));
     }
 }

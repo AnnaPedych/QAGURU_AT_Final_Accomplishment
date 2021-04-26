@@ -16,11 +16,13 @@ public class SuggestionsAndHistoryTests extends TestBase {
 
     @Test
     public void verifySearchSuggestionAndHistoryTest() {
-        step("Open test Url", () -> open(""));
-        step("Type jeans into search field", () -> $("#small-searchterms").val("jeans"));
+        step("Type jeans into search field", () -> {
+            open("");
+            $("#small-searchterms").val("jeans");
+        });
         step("Verify search suggestion is appeared and click on it", () -> $(".ui-autocomplete li a").shouldHave(Condition.text("Blue Jeans")).click());
-        String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
         step("Verify that user was redirected to correct page", () -> {
+            String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
             assertEquals("http://demowebshop.tricentis.com/blue-jeans", currentUrl);
             $(".product-name h1").shouldHave(Condition.text("Blue Jeans"));
         });

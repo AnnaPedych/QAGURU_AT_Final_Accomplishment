@@ -17,14 +17,14 @@ public class LoginUITests extends TestBase {
     @Test
     @Order(2)
     public void enterValidCredentialsTest() {
-        step(" ", () -> {
+        step("Login with test account credentials", () -> {
             open("");
             $("a[href='/login']").click();
             $("html").shouldHave(text("Welcome, Please Sign In!"));
             $("#Email").setValue(getTestUsername());
             $("#Password").setValue(getTestPassword()).pressEnter();
         });
-        step(" ", () -> {
+        step("Verify correct user is logged in", () -> {
             $(".account").shouldHave(text(getTestUsername()));
         });
     }
@@ -32,14 +32,14 @@ public class LoginUITests extends TestBase {
     @Test
     @Order(1)
     public void enterInvalidCredentialsTest() {
-        step(" ", () -> {
+        step("Log in with empty email and password", () -> {
             open("");
             $("a[href='/login']").click();
             $("html").shouldHave(text("Welcome, Please Sign In!"));
             $("#Email").setValue(" ");
             $("#Password").setValue(" ").pressEnter();
         });
-        step(" ", () -> {
+        step("Verify validation message of unsuccessful login", () -> {
             $(".validation-summary-errors span").shouldHave(text("Login was unsuccessful. Please correct the errors and try again."));
         });
     }

@@ -3,7 +3,6 @@ package tests.combinedTests;
 import api.Auth;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Cookie;
 import tests.TestBase;
@@ -62,34 +61,37 @@ public class AddToCartTests extends TestBase {
 
     @Test
     @Order(2)
-    public void AddToCartLoggedInTests() throws ParseException {
+    public void AddToCartLoggedInTests() {
         Map<String, String> cookies = new Auth().getAuthorizedCookies(getTestUsername(), getTestPassword());
-
-        open("http://demowebshop.tricentis.com/Themes/DefaultClean/Content/images/logo.png");
-        getWebDriver().manage().addCookie(new Cookie("Nop.customer", cookies.get("Nop.customer")));
-        getWebDriver().manage().addCookie(new Cookie("NOPCOMMERCE.AUTH", cookies.get("NOPCOMMERCE.AUTH")));
-        getWebDriver().manage().addCookie(new Cookie("ARRAffinity", cookies.get("ARRAffinity")));
-
-        open("");
-        $(".account").shouldHave(text(getTestUsername()));
+        step("Get cookies", () -> {
+                    open("http://demowebshop.tricentis.com/Themes/DefaultClean/Content/images/logo.png");
+                    getWebDriver().manage().addCookie(new Cookie("Nop.customer", cookies.get("Nop.customer")));
+                    getWebDriver().manage().addCookie(new Cookie("NOPCOMMERCE.AUTH", cookies.get("NOPCOMMERCE.AUTH")));
+                    getWebDriver().manage().addCookie(new Cookie("ARRAffinity", cookies.get("ARRAffinity")));
+                });
+        step("Verify that correct user is logged in", () -> {
+                    open("");
+                    $(".account").shouldHave(text(getTestUsername()));
+                });
 
         String initialCartValue = new TestBase().getInitialCartCount();
         int initialCartCount = Integer.parseInt(initialCartValue.substring(1, initialCartValue.length() - 1));
 
-        String response =
-                given()
-                        .filter(filters().customTemplates())
-                        .contentType("application/x-www-form-urlencoded; charset=UTF-8")
-                        .cookies(cookies)
-                        .body("product_attribute_16_5_4=14&product_attribute_16_6_5=15&product_attribute_16_3_6=18&product_attribute_16_4_7=44&product_attribute_16_8_8=22&addtocart_16.EnteredQuantity=1")
-                        .when()
-                        .post("/addproducttocart/details/16/1")
-                        .then()
-                        .statusCode(200)
-                        .log().body()
-                        .body("success", is(true))
-                        .body("updatetopcartsectionhtml", is(("(" + (initialCartCount + 1) + ")")))
-                        .extract().response().asString();
+        step("Add product to the cart and verify it is summed to cart product count", () -> {
+                    String response =
+                            given()
+                                    .filter(filters().customTemplates())
+                                    .contentType("application/x-www-form-urlencoded; charset=UTF-8")
+                                    .cookies(cookies)
+                                    .body("product_attribute_16_5_4=14&product_attribute_16_6_5=15&product_attribute_16_3_6=18&product_attribute_16_4_7=44&product_attribute_16_8_8=22&addtocart_16.EnteredQuantity=1")
+                                    .when()
+                                    .post("/addproducttocart/details/16/1")
+                                    .then()
+                                    .statusCode(200)
+                                    .log().body()
+                                    .body("success", is(true))
+                                    .body("updatetopcartsectionhtml", is(("(" + (initialCartCount + 1) + ")")))
+                                    .extract().response().asString();
 
         JSONParser parser = new JSONParser();
         JSONObject JSONResponse = (JSONObject) parser.parse(response);
@@ -97,5 +99,6 @@ public class AddToCartTests extends TestBase {
 
         open("");
         $("a[href='/cart'] .cart-qty").shouldHave(text((cartCount)));
+        });
     }
 }

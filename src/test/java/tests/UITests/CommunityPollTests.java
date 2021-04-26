@@ -16,6 +16,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 @Tag("ui")
 public class CommunityPollTests extends TestBase {
     @Test
+    @Disabled
     @Order(2)
     public void voteAsLoggedInUserTest() {
         Map<String, String> cookies = new Auth().getAuthorizedCookies("qaguru@qa.guru", "qaguru@qa.guru1");

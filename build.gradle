@@ -87,10 +87,3 @@ task combined(type: Test) {
         systemProperties(System.getProperties())
     }
 }
-
-task flaky(type: Test) {
-    useJUnitPlatform {
-        includeTags 'flaky'
-        systemProperties(System.getProperties())
-    }
-}

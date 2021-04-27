@@ -21,7 +21,7 @@ public class SuggestionsAndHistoryTests extends TestBase {
             open("");
             $("#small-searchterms").val("jeans");
         });
-        step("Click on search suggestion", () -> $(".ui-autocomplete li a").click());
+        step("Click on search suggestion", () -> $(".ui-autocomplete li").click());
         step("Verify that user was redirected to correct page", () -> {
             String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
             assertEquals("http://demowebshop.tricentis.com/blue-jeans", currentUrl);

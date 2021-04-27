@@ -1,6 +1,10 @@
 package tests.UITests;
 
 import com.codeborne.selenide.Condition;
+import customAnnotations.JiraIssue;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -15,9 +19,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.not;
 
 @Tag("ui")
+@Owner("Anna Pedych")
+@Feature("Updated design for web shop")
 public class MainPageTests extends TestBase {
 
     @Test
+    @JiraIssue("QC3-27")
+    @Story("Main page")
+    @DisplayName("All blocks are visible")
     public void checkAllBlocksLoadedTest() {
         step("Verify all blocks are visible", () -> {
             open("");
@@ -33,6 +42,8 @@ public class MainPageTests extends TestBase {
     }
 
     @Test
+    @JiraIssue("QC3-27")
+    @Story("Main page")
     @DisplayName("Console log should not contain errors")
     void checkConsoleLogErrorsTest() {
         step("Open test Url", () -> open(""));

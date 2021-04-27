@@ -1,5 +1,9 @@
 package tests.UITests;
 
+import customAnnotations.JiraIssue;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 import tests.TestBase;
 
@@ -11,11 +15,16 @@ import static tests.TestData.getTestPassword;
 import static tests.TestData.getTestUsername;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@Tag("ui")
+@Tags({@Tag("ui"), @Tag("login")})
+@Owner("Anna Pedych")
+@Feature("Login")
 public class LoginUITests extends TestBase {
 
     @Test
     @Order(2)
+    @JiraIssue("QC3-27")
+    @Story("Valid log in scenario implementation")
+    @DisplayName("Positive log in case")
     public void enterValidCredentialsTest() {
         step("Login with test account credentials", () -> {
             open("");
@@ -31,6 +40,9 @@ public class LoginUITests extends TestBase {
 
     @Test
     @Order(1)
+    @JiraIssue("QC3-27")
+    @Story("Validations on log in")
+    @DisplayName("Validation for empty fields on log in form")
     public void enterInvalidCredentialsTest() {
         step("Log in with empty email and password", () -> {
             open("");

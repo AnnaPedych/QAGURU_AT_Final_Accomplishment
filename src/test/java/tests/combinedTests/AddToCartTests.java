@@ -1,6 +1,10 @@
 package tests.combinedTests;
 
 import api.Auth;
+import customAnnotations.JiraIssue;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.junit.jupiter.api.*;
@@ -22,11 +26,16 @@ import static tests.TestData.getTestPassword;
 import static tests.TestData.getTestUsername;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@Tag("combined")
+@Tags({@Tag("combined"), @Tag("cart")})
+@Owner("Anna Pedych")
+@Feature("Cart development")
 public class AddToCartTests extends TestBase {
 
     @Test
     @Order(1)
+    @JiraIssue("QC3-27")
+    @Story("Anonymous shopping")
+    @DisplayName("Anonymous user adds product to cart")
     public void addToCartAnonymousTests() {
         Map<String, String> cookies = new Auth().getAnonymousCookies();
         step("Get cookies", () -> {
@@ -61,6 +70,9 @@ public class AddToCartTests extends TestBase {
 
     @Test
     @Order(2)
+    @JiraIssue("QC3-27")
+    @Story("Authorized shopping")
+    @DisplayName("User adds product to cart after log in")
     public void addToCartLoggedInTests() {
         Map<String, String> cookies = new Auth().getAuthorizedCookies(getTestUsername(), getTestPassword());
         step("Get cookies", () -> {

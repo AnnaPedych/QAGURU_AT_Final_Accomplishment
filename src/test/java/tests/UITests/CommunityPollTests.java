@@ -2,6 +2,10 @@ package tests.UITests;
 
 import api.Auth;
 import com.codeborne.selenide.Condition;
+import customAnnotations.JiraIssue;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Cookie;
 import tests.TestBase;
@@ -15,10 +19,16 @@ import static io.qameta.allure.Allure.step;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Tag("ui")
+@Owner("Anna Pedych")
+@Feature("Customer interaction")
 public class CommunityPollTests extends TestBase {
+
     @Test
     @Disabled
     @Order(2)
+    @JiraIssue("QC3-27")
+    @Story("User voting")
+    @DisplayName("Vote as logged in user")
     public void voteAsLoggedInUserTest() {
         Map<String, String> cookies = new Auth().getAuthorizedCookies("qaguru@qa.guru", "qaguru@qa.guru1");
         step("Get cookies", () -> {
@@ -39,6 +49,9 @@ public class CommunityPollTests extends TestBase {
 
     @Test
     @Order(1)
+    @JiraIssue("QC3-27")
+    @Story("User voting")
+    @DisplayName("Validation on unauthorized voting")
     public void voteAsAnonymousUserTest() {
         Map<String, String> cookies = new Auth().getAnonymousCookies();
         step("Get cookies", () -> {

@@ -1,6 +1,10 @@
 package tests.combinedTests;
 
 import api.Auth;
+import customAnnotations.JiraIssue;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.junit.jupiter.api.*;
@@ -22,11 +26,16 @@ import static tests.TestData.getTestPassword;
 import static tests.TestData.getTestUsername;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@Tag("combined")
+@Tags({@Tag("combined"), @Tag("wishlist")})
+@Owner("Anna Pedych")
+@Feature("Wishlist development")
 public class AddToWishListTests extends TestBase {
 
     @Test
     @Order(1)
+    @JiraIssue("QC3-27")
+    @Story("Anonymous wishlist usage")
+    @DisplayName("Anonymous user adds product to wishlist")
     void addToWishListAnonymousTest() {
         Map<String, String> cookies = new Auth().getAnonymousCookies();
         step("Get cookies", () -> {
@@ -61,6 +70,9 @@ public class AddToWishListTests extends TestBase {
 
     @Test
     @Order(2)
+    @JiraIssue("QC3-27")
+    @Story("Authorized wishlist usage")
+    @DisplayName("User adds product to wishlist after log in")
     void addToWishListLoggedInTest() {
         Map<String, String> cookies = new Auth().getAuthorizedCookies(getTestUsername(), getTestPassword());
         step("Get cookies", () -> {

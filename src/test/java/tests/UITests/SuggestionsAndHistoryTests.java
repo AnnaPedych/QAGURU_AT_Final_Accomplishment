@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class SuggestionsAndHistoryTests extends TestBase {
 
     @Test
+    @Tag("flaky")
     public void verifySearchSuggestionAndHistoryTest() {
         step("Type jeans into search field", () -> {
             open("");

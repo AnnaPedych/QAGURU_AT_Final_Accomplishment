@@ -33,6 +33,7 @@ public class MainPageTests extends TestBase {
     }
 
     @Test
+    @Tag("flaky")
     @DisplayName("Console log should not contain errors")
     void checkConsoleLogErrorsTest() {
         step("Open test Url", () -> open(""));

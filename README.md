@@ -51,6 +51,7 @@
 <a href="https://www.jetbrains.com/idea/">
     <img src="https://starchenkov.pro/qa-guru/img/skills/Jira.svg" width="40" height="40"  alt="IDEA"/>
 </a>
+
 IntelliJ IDEA, Java, Selenide, Selenoid, Gradle, JUnit5, Allure SE, Allure TestOps, Github, Jenkins, Rest-Assured, Integration with telegram (reports), Jira.
 
 ## Video of test cases execution is available, e.g.:
@@ -60,14 +61,21 @@ IntelliJ IDEA, Java, Selenide, Selenoid, Gradle, JUnit5, Allure SE, Allure TestO
 ### - Selenoid
 
 ### - Jenkins
+![image](https://user-images.githubusercontent.com/78226789/116778190-20069880-aa79-11eb-858e-de40c60e1726.png)
+![image](https://user-images.githubusercontent.com/78226789/116778208-301e7800-aa79-11eb-817b-fc1debc48033.png)
 
 ### - Allure SE
+![image](https://user-images.githubusercontent.com/78226789/116778236-5c39f900-aa79-11eb-849f-7c1ff99fab97.png)
 
 ### - Allure TestOps
+![image](https://user-images.githubusercontent.com/78226789/116778267-88ee1080-aa79-11eb-9b29-96152673e270.png)
+![image](https://user-images.githubusercontent.com/78226789/116778255-78d63100-aa79-11eb-8903-bc6fe1b53a64.png)
+![image](https://user-images.githubusercontent.com/78226789/116778286-a1f6c180-aa79-11eb-87ee-bf451ba61647.png)
 
 ### - Telegram
+![image](https://user-images.githubusercontent.com/78226789/116778311-ceaad900-aa79-11eb-9086-007a0759d968.png)
 
 ### - Jira
-
+![image](https://user-images.githubusercontent.com/78226789/116778335-f4d07900-aa79-11eb-9dbf-6dc5d05da122.png)
 
 

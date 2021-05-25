@@ -47,8 +47,8 @@ tasks.withType(JavaCompile) {
 }
 
 tasks.withType(Test) {
-    systemProperties += System.properties
-    System.setProperty("junit.jupiter.extensions.autodetection.enabled", "true")
+    systemProperties(System.getProperties())
+    useJUnitPlatform()
 
     if (System.getProperty("threads") != null) {
         systemProperties += [
@@ -67,11 +67,6 @@ tasks.withType(Test) {
             exceptionFormat "short"
         }
     }
-}
-
-test {
-    useJUnitPlatform()
-    systemProperties(System.getProperties())
 }
 
 task ui(type: Test) {
